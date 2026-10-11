@@ -1,0 +1,822 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Threads Fashion Store</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --accent: #0f9d8a;
+    --dark: #20252b;
+    --light: #f1f5f4;
+}
+
+body {
+    background: white;
+    color: #20252b;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.topbar {
+    background: var(--dark);
+    color: white;
+    padding: 12px 5%;
+    text-align: center;
+    font-size: 12px;
+}
+
+header {
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+button {
+    cursor: pointer;
+}
+
+.hero {
+    background: var(--light);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.hero-text {
+    padding: 45px 10%;
+}
+
+.hero-text small {
+    color: var(--accent);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin: 15px 0;
+    line-height: 1.1;
+}
+
+.hero h1 span {
+    color: var(--accent);
+}
+
+.hero p {
+    color: #68727b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.hero img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 18px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+section {
+    padding: 40px 6%;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-size: 21px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+    margin-top: -15px;
+    margin-bottom: 25px;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.category {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.category img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category h3 {
+    position: absolute;
+    bottom: 0;
+    background: #ffffffdf;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    font-size: 13px;
+}
+
+.search-tools {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.search-tools input,
+.search-tools select {
+    padding: 11px;
+    border: 1px solid #ddd;
+    background: white;
+}
+
+.search-tools input {
+    width: 240px;
+    max-width: 100%;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.product {
+    border: 1px solid #eee;
+    padding: 12px;
+    text-align: center;
+    position: relative;
+}
+
+.product img {
+    width: 100%;
+    height: 145px;
+    object-fit: contain;
+}
+
+.product h3 {
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+.stars {
+    color: #e4ac24;
+    margin: 7px;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.product button {
+    padding: 8px 12px;
+    margin-top: 10px;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+}
+
+.wishlist {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: white !important;
+    color: #e54b69 !important;
+    border: 1px solid #ddd !important;
+}
+
+.promo {
+    background: var(--dark);
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.promo img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.promo-text {
+    padding: 30px;
+}
+
+.promo-text h2 {
+    font-size: 32px;
+    margin: 12px 0;
+}
+
+.promo-text span {
+    color: #61d7c5;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.service {
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #eee;
+}
+
+.service .symbol {
+    font-size: 30px;
+    color: var(--accent);
+}
+
+.service h3 {
+    margin: 12px 0;
+    font-size: 14px;
+}
+
+.service p {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.6;
+}
+
+.reviews {
+    background: var(--light);
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.review {
+    padding: 20px;
+    background: white;
+}
+
+.review p {
+    color: #666;
+    font-size: 12px;
+    line-height: 1.7;
+    margin: 12px 0;
+}
+
+.newsletter {
+    text-align: center;
+    background: #dff5f0;
+    padding: 35px 15px;
+}
+
+.newsletter p {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+.newsletter input {
+    padding: 12px;
+    width: 250px;
+    max-width: 60%;
+    border: 1px solid #ccc;
+}
+
+.newsletter button {
+    padding: 12px;
+    border: none;
+    background: var(--accent);
+    color: white;
+}
+
+footer {
+    background: var(--dark);
+    color: white;
+    padding: 35px 6%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+footer h3 {
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+footer p,
+footer a {
+    color: #bbb;
+    font-size: 12px;
+    line-height: 2;
+    display: block;
+}
+
+footer a:hover {
+    color: white;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #444;
+    margin-top: 25px;
+    padding-top: 18px;
+    font-size: 11px;
+    color: #bbb;
+}
+
+body.dark-mode {
+    background: #171b1d;
+    color: #f1f4f3;
+}
+
+body.dark-mode section:not(.reviews) {
+    background: #171b1d;
+}
+
+body.dark-mode .product,
+body.dark-mode .service {
+    background: #22292b;
+    border-color: #394143;
+}
+
+body.dark-mode .reviews,
+body.dark-mode .hero {
+    background: #22292b;
+}
+
+body.dark-mode .review {
+    background: #303739;
+    color: white;
+}
+
+body.dark-mode .product h3,
+body.dark-mode .review p {
+    color: #eee;
+}
+
+@media (max-width: 700px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero,
+    .promo {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text {
+        padding: 35px 8%;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero img {
+        height: 230px;
+    }
+
+    .categories,
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category {
+        height: 150px;
+    }
+
+    .services,
+    .review-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .promo img {
+        height: 210px;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        gap: 10px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    FREE DELIVERY ON ORDERS OVER $60 | NEW SEASON COLLECTION
+</div>
+
+<header>
+    <a href="#" class="logo">URBAN<span>THREADS.</span></a>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#categories">Collections</a>
+        <a href="#shop">Shop</a>
+        <a href="#offers">Offers</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div>
+        <button onclick="toggleDarkMode()">◐ Theme</button>
+        <button onclick="showCart()">🛍 <span id="cartCount">0</span></button>
+    </div>
+</header>
+
+<div class="hero">
+    <div class="hero-text">
+        <small>YOUR STYLE, YOUR STORY</small>
+        <h1>Wear What<br>Makes You <span>Different.</span></h1>
+        <p>
+            Discover stylish everyday clothing and fresh designs
+            that help you express your personality.
+        </p>
+        <a href="#shop" class="btn">Explore Collection</a>
+    </div>
+
+    <img
+        src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=900&q=80"
+        alt="Fashion collection">
+</div>
+
+<section id="categories">
+    <h2 class="title">Shop By Collection</h2>
+    <p class="subtitle">Find your favourite style.</p>
+
+    <div class="categories">
+        <a class="category" href="#shop" onclick="chooseCategory('Women')">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=500&q=80" alt="Women">
+            <h3>Women</h3>
+        </a>
+
+        <a class="category" href="#shop" onclick="chooseCategory('Men')">
+            <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=500&q=80" alt="Men">
+            <h3>Men</h3>
+        </a>
+
+        <a class="category" href="#shop" onclick="chooseCategory('Sportswear')">
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=500&q=80" alt="Sportswear">
+            <h3>Sportswear</h3>
+        </a>
+
+        <a class="category" href="#shop" onclick="chooseCategory('Accessories')">
+            <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=500&q=80" alt="Accessories">
+            <h3>Accessories</h3>
+        </a>
+    </div>
+</section>
+
+<section id="shop">
+    <h2 class="title">Latest Products</h2>
+    <p class="subtitle">Fresh styles selected for you.</p>
+
+    <div class="search-tools">
+        <input type="search" id="search"
+               placeholder="Search products..."
+               oninput="displayProducts()">
+
+        <select id="categoryFilter" onchange="displayProducts()">
+            <option value="All">All categories</option>
+            <option value="Men">Men</option>
+            <option value="Women">Women</option>
+            <option value="Sportswear">Sportswear</option>
+            <option value="Accessories">Accessories</option>
+        </select>
+
+        <select id="sort" onchange="displayProducts()">
+            <option value="featured">Featured</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+        </select>
+    </div>
+
+    <div class="products" id="productList"></div>
+    <p id="emptyMessage" style="display:none;text-align:center;margin-top:20px">
+        No matching products found.
+    </p>
+</section>
+
+<section class="promo" id="offers">
+    <img
+        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=80"
+        alt="Fashion promotion">
+
+    <div class="promo-text">
+        <small>SPECIAL OFFER</small>
+        <h2>Weekend Sale<br><span>Up To 25% Off</span></h2>
+        <p>Discover new styles at special prices.</p>
+        <a href="#shop" class="btn">Shop Now</a>
+    </div>
+</section>
+
+<section>
+    <h2 class="title">Why Shop With Us?</h2>
+
+    <div class="services">
+        <div class="service">
+            <div class="symbol">➜</div>
+            <h3>Fast Delivery</h3>
+            <p>Convenient delivery for your shopping orders.</p>
+        </div>
+
+        <div class="service">
+            <div class="symbol">↺</div>
+            <h3>Easy Returns</h3>
+            <p>A simple returns policy for your convenience.</p>
+        </div>
+
+        <div class="service">
+            <div class="symbol">◇</div>
+            <h3>Secure Shopping</h3>
+            <p>A clean shopping experience designed for customers.</p>
+        </div>
+    </div>
+</section>
+
+<section class="reviews" id="reviews">
+    <h2 class="title">Customer Reviews</h2>
+
+    <div class="review-grid">
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>The clothing styles are lovely, and the website is easy to navigate.</p>
+            <strong>— Alex M.</strong>
+        </div>
+
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>I like the product categories and the simple search feature.</p>
+            <strong>— Jordan K.</strong>
+        </div>
+
+        <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>A neat website with beautiful fashion products and clear prices.</p>
+            <strong>— Taylor L.</strong>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter">
+    <h2>Join Our Newsletter</h2>
+    <p>Receive updates about new products and special offers.</p>
+
+    <form onsubmit="subscribe(event)" style="margin-top:18px">
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+    </form>
+</section>
+
+<footer id="contact">
+    <div class="footer-grid">
+        <div>
+            <h3>URBAN THREADS</h3>
+            <p>Everyday fashion for people with individual style.</p>
+        </div>
+
+        <div>
+            <h3>Useful Links</h3>
+            <a href="#">Home</a>
+            <a href="#categories">Collections</a>
+            <a href="#shop">Shop</a>
+            <a href="#offers">Special Offers</a>
+        </div>
+
+        <div>
+            <h3>Customer Care</h3>
+            <a href="#contact">Contact Us</a>
+            <a href="#contact">Delivery Information</a>
+            <a href="#contact">Returns</a>
+        </div>
+
+        <div>
+            <h3>Contact Information</h3>
+            <p>Email: hello@urbanthreads.example</p>
+            <p>Phone: +234 800 000 0000</p>
+        </div>
+    </div>
+
+    <div class="copyright">
+        © 2026 Urban Threads. All rights reserved.
+    </div>
+</footer>
+
+<script>
+const products = [
+    {
+        name: "Classic Black T-Shirt",
+        category: "Men",
+        price: 14.50,
+        image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+        name: "Casual Hoodie",
+        category: "Men",
+        price: 29.00,
+        image: "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+        name: "Women's Crop Top",
+        category: "Women",
+        price: 18.00,
+        image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+        name: "White Summer Shirt",
+        category: "Women",
+        price: 24.00,
+        image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+        name: "Training Outfit",
+        category: "Sportswear",
+        price: 32.00,
+        image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+        name: "Fashion Handbag",
+        category: "Accessories",
+        price: 21.00,
+        image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+        name: "Denim Jacket",
+        category: "Men",
+        price: 42.00,
+        image: "https://images.unsplash.com/photo-1516257984-b1b4d707412e?auto=format&fit=crop&w=400&q=80"
+    },
+    {
+        name: "Fashion Sunglasses",
+        category: "Accessories",
+        price: 12.00,
+        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=400&q=80"
+    }
+];
+
+let cart = [];
+let wishlist = [];
+
+function displayProducts() {
+    const search = document.getElementById("search").value.toLowerCase();
+    const category = document.getElementById("categoryFilter").value;
+    const sort = document.getElementById("sort").value;
+
+    let filtered = products.filter(product =>
+        product.name.toLowerCase().includes(search) &&
+        (category === "All" || product.category === category)
+    );
+
+    if (sort === "low") {
+        filtered.sort((a, b) => a.price - b.price);
+    } else if (sort === "high") {
+        filtered.sort((a, b) => b.price - a.price);
+    }
+
+    document.getElementById("productList").innerHTML =
+        filtered.map(product => `
+            <div class="product">
+                <button class="wishlist"
+                    onclick="toggleWishlist('${product.name}')">
+                    ${wishlist.includes(product.name) ? "♥" : "♡"}
+                </button>
+
+                <img src="${product.image}" alt="${product.name}">
+                <div class="stars">★★★★★</div>
+                <h3>${product.name}</h3>
+                <div class="price">$${product.price.toFixed(2)}</div>
+
+                <button onclick="addToCart('${product.name}')">
+                    Add to Cart
+                </button>
+            </div>
+        `).join("");
+
+    document.getElementById("emptyMessage").style.display =
+        filtered.length ? "none" : "block";
+}
+
+function chooseCategory(category) {
+    document.getElementById("categoryFilter").value = category;
+    displayProducts();
+}
+
+function addToCart(name) {
+    cart.push(name);
+    document.getElementById("cartCount").textContent = cart.length;
+    alert(name + " added to your cart!");
+}
+
+function showCart() {
+    if (cart.length === 0) {
+        alert("Your shopping cart is empty.");
+    } else {
+        alert("Your cart contains:\n" + cart.join("\n"));
+    }
+}
+
+function toggleWishlist(name) {
+    if (wishlist.includes(name)) {
+        wishlist = wishlist.filter(item => item !== name);
+    } else {
+        wishlist.push(name);
+    }
+
+    displayProducts();
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+}
+
+function subscribe(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+
+    alert("Thank you for subscribing, " + email + "!");
+
+    document.getElementById("email").value = "";
+}
+
+displayProducts();
+</script>
+
+</body>
+</html>
